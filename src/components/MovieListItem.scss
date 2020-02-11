@@ -1,0 +1,13 @@
+.movie-item {
+  width: 20%;
+  margin: 0.2rem;
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  p {
+    font-size: 0.5rem;
+    max-height: 0.5rem;
+    overflow: hidden;
+  }
+}

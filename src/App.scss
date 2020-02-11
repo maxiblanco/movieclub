@@ -1,0 +1,12 @@
+$title-font: 'Raleway', sans-serif;
+$body-font: 'Nunito', sans-serif;
+
+h1 {
+  font-family: $title-font;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+body {
+  font-family: $body-font;
+}
