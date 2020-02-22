@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 // Components
 import MovieList from "./components/MovieList";
-import MovieDetail from "./components/MovieDetail"
-import 'normalize.css';
+import MovieDetail from "./components/MovieDetail";
 import './App.scss';
 
 const App = () => {
