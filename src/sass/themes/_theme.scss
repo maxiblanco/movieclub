@@ -1,3 +1,17 @@
+/* Basic colors */
+:root {
+  /* Light palette */
+    --color-dark: hsl(0, 0%, 2%);
+    --color-darkish: hsl(0, 0%, 25%);
+    --color-lightish: hsl(0, 0%, 90%);
+    --color-light: hsl(0, 0%, 98%);
+    --color-mid: hsl(0, 0%, 50%);
+
+  /* Fonts */
+  --font-plain: Nunito, Helvetica, Arial, sans-serif;
+  --font-special: Raleway, Helvetica, sans-serif;
+}
+
 /* Basic Theme */
 :root {
   line-height: var(--ratio);

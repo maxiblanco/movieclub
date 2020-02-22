@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieListItem from './MovieListItem'
+import MovieListItem from '../MovieListItem/MovieListItem'
 
 import './MovieList.scss'
 
