@@ -1,19 +1,16 @@
 /* Basic colors */
 :root {
   /* Light palette */
-    --color-dark: hsl(0, 0%, 2%);
-    --color-darkish: hsl(0, 0%, 25%);
-    --color-lightish: hsl(0, 0%, 90%);
-    --color-light: hsl(0, 0%, 98%);
-    --color-mid: hsl(0, 0%, 50%);
+    --yellow: #fcf8e8;
+    --pearl: #ecdfc8;
+    --salmon: #ecb390;
+    --terra-cotta: #DD7661;
 
   /* Fonts */
   --font-plain: Nunito, Helvetica, Arial, sans-serif;
   --font-special: Raleway, Helvetica, sans-serif;
-}
 
-/* Basic Theme */
-:root {
+  /* Basic Theme */
   line-height: var(--ratio);
   font-size: calc(0.333vw + 1em);
   font-family: var(--font-plain);

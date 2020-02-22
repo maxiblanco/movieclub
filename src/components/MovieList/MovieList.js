@@ -4,13 +4,12 @@ import MovieListItem from '../MovieListItem/MovieListItem'
 import './MovieList.scss'
 
 
-const MovieList = (props) => {
+const MovieList = ({movies, setCurrent}) => {
   return (
     <div className="flex-container">
-    {props.movies.map((movie) => {
-      console.log(movie.title)
+    {movies.map(({id, title, poster_path, overview}) => {
       return (
-        <MovieListItem key={movie.id} title={movie.title} poster={movie.poster_path} id={movie.id} setCurrent={movie.setCurrent} />
+        <MovieListItem key={id} title={title} poster={poster_path} overview={overview} id={id} setCurrent={setCurrent} />
       )
     }
       )}

@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 // Components
 import MovieList from "./components/MovieList/MovieList";
 import MovieDetail from "./components/MovieDetail/MovieDetail";
-import './App.scss';
+// Styles
+import 'main.scss';
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -14,7 +15,7 @@ useEffect(()=> {
   .then((response) => response.json())
   .then(data => setMovies(data.results))
 }, [])
-console.log(movies)
+
   return (
     <div className="App">
       <h1>React Study Group Movie - Database</h1>

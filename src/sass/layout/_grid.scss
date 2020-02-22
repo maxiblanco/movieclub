@@ -5,14 +5,15 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Required hardcoded min(Adjust by eye)
 }
 
-/* Minimal support for this(safari) 20rem = 320px at 16px base */
+/* Minimal support for this(safari) 20rem = 320px at 16px base
 @supports (width: min(20rem, 100%)) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));  
   }
 }
+*/
 
-/* BASE HTML */
+//* BASE HTML */
 
 /* 
 <div class="grid" data-min="20rem">
