@@ -1,0 +1,46 @@
+/* Cluster components suit any groups of elements that differ in length and are liable to wrap. 
+Buttons that appear together at the end of forms are ideal candidates, as well as lists of tags, 
+keywords, or other meta information. Use the Cluster to align any groups of horizontally laid out 
+elements to the left or right, or in the center. */
+
+.cluster {
+  --space: var(--s1); // Change this value for spacing
+  overflow: hidden;
+}
+
+.cluster > * {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; // Horizontal alignment
+  align-items: center; // Vertical alignment
+  margin: calc(var(--space) / 2 * -1); // Space between each element
+}
+
+.cluster > * > * {
+  margin: calc(var(--space) / 2);
+}
+
+//* BASIC HTML  */
+
+/* 
+<div class="cluster">
+  <div> <!-- intermediary wrapper -->
+    <div><!-- child --></div>
+    <div><!-- child --></div>
+    <div><!-- etc --></div>
+  </div>
+</div>
+
+//* Or with a list
+<div class="cluster">
+  <ul>
+    <li><!-- content of first list item --></li>
+    <li><!-- content of second list item --></li>
+    <li><!-- etc --></li>
+    <li><!-- etc --></li>
+    <li><!-- etc --></li>
+    <li><!-- etc --></li>
+  </ul>
+</div>
+
+*/

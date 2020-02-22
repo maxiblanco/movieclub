@@ -1,0 +1,27 @@
+/* The basic, and highly prolific, use case for a Box is to group and demarcate some content. 
+This content may appear as a message or 'note' among other, textual flow content, as one 
+card in a grid of many, or as the inner wrapper of a positioned dialog element. */
+
+.box {
+  padding: var(--s1);
+  border: var(--border-thin) solid;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.box * {
+  color: inherit;
+}
+
+.box.invert {
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
+/* HTML EXAMPLE */
+/* 
+<div class="box">
+  <-- the box's contents -->
+</div>
+  
+*/

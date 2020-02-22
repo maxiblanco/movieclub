@@ -1,0 +1,63 @@
+/* Basic global resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  background-color: inherit;
+  font-family: inherit;
+  color: inherit;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 0;
+  border-color: currentColor;
+}
+
+/* Line of text axiom. Constrain width of text line block elements. */
+* {
+  max-width: var(--measure);
+}
+
+/* Except on elements that can contain more than just text. */
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-width: none;
+}
+
+/* Images responsive by default */
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Hidden content */
+
+[hidden] {
+  display: none;
+}
+
+[hidden] + * {
+  margin-top: 0 !important;
+}
+
+/* For older browsers */
+nav,
+main,
+header,
+footer {
+  display: block;
+}
+
+/* Smooth scrolling */
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}

@@ -1,0 +1,122 @@
+// Base implementation - No split
+.stack {
+  --space: var(--s1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * + * {
+  margin-top: var(--space);
+}
+
+.stack > :nth-child(2) {
+  margin-bottom: auto;
+}
+
+
+
+// Split after first child
+/* 
+.stack {
+  --space: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+} 
+
+.stack > * + * {
+  margin-top: var(--space);
+}
+
+.stack:only-child {
+  height: 100%;
+}
+
+.stack > :nth-child(1) {
+  margin-bottom: auto;
+}
+*/
+
+// Recursive Stack - Spacing applies regarless of nesting level
+/* 
+.stack {
+  --space: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack * {
+  margin-top: 0;
+  margin-bottom: 0;
+} 
+
+.stack * + * {
+  margin-top: var(--space);
+}
+
+.stack:only-child {
+  height: 100%;
+}
+
+.stack > :nth-child(1) {
+  margin-bottom: auto;
+}
+*/
+
+/* HTML BASICS AND EXAMPLES */
+/* <div class="stack">
+  <div><!-- child --></div>
+  <div><!-- child --></div>
+  <div><!-- etc --></div>
+</div>
+   */
+
+/* Basic example 
+<stack-l>
+  <h2><!-- some text --></h2>
+  <img src="path/to/some/image.svg" />
+  <p><!-- more text --></p>
+</stack-l> */
+
+/* Nested example
+<stack-l space="3rem">
+  <h2><!-- heading label --></h2>
+  <stack-l space="1.5rem">
+    <p><!-- body text --></p>
+    <p><!-- body text --></p>
+    <p><!-- body text --></p>
+  </stack-l>
+  <h2><!-- heading label --></h2>
+  <stack-l space="1.5rem">
+    <p><!-- body text --></p>
+    <p><!-- body text --></p>
+    <p><!-- body text --></p>
+  </stack-l>
+</stack-l>
+*/
+
+/*  Recursive example
+<stack-l recursive>
+  <div><!-- first level child --></div>
+  <div><!-- first level sibling --></div>
+  <div>
+    <div><!-- second level child --></div>
+    <div><!-- second level sibling --></div>
+  </div>
+</stack-l>
+*/
+
+/* Add list semantics for screen readers. ARIA attr
+<stack-l role="list">
+  <div role="listitem"><!-- item 1 content --></div>
+  <div role="listitem"><!-- item 2 content --></div>
+  <div role="listitem"><!-- item 3 content --></div>
+</stack-l>
+*/

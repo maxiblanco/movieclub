@@ -1,0 +1,88 @@
+/* 
+The Reel is a robust and efficient antidote to carousel/slider components.
+As already discussed and demonstrated, it is ideal for browsing categories 
+of things: movies; products; news stories; photographs.
+In addition, it can be used to supplant button-activated menu systems. (Sausage links)
+For that case it may be best to hide the scrollbar.
+*/
+
+.reel {
+  display: flex;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: #fff #000; //* Thumb color - Track color
+}
+
+.reel::-webkit-scrollbar {
+  height: var(--s0);
+}
+
+.reel::-webkit-scrollbar-track {
+  background-color: #000; //*Track color - The color of the scrollbar track
+  
+}
+//*Thumb color - The color of the scrollbar thumb
+.reel::-webkit-scrollbar-thumb {
+  background-color: #000;
+  background-image: linear-gradient(#000 0, #000 0.25rem, #fff 0.25rem, #fff 0.75rem, #000 0.75rem);
+}
+
+.reel > * {
+  flex: 0 0 auto;
+}
+
+
+.reel > img {
+  height: 100%;
+  flex-basis: auto;
+  width: auto;
+}
+
+.reel > * + * {
+  margin-left: var(--s0);
+}
+
+/* JS dependant - observer at the bottom
+Inside the observer, the Reel’s scrollWidth is compared to 
+its clientWidth. If the scrollWidth is larger, the 
+overflowing class is added. */
+
+.reel.overflowing {
+  padding-bottom: var(--s0);
+}
+
+//* BASIC HTML  */
+/* 
+<div class="reel">
+  <div><!-- header --></div>
+  <div><!-- centered --></div>
+  <div><!-- footer --></div>
+</div>
+*/
+
+//* ResizeObserver script (IIFE) version  */
+
+/* 
+(function() {
+  const className = 'reel';
+  const reels = Array.from(document.querySelectorAll(`.${className}`));
+  const toggleOverflowClass = elem => {
+    elem.classList.toggle('overflowing', elem.scrollWidth > elem.clientWidth);
+  };
+
+  for (let reel of reels) {
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(entries => {
+        toggleOverflowClass(entries[0].target);
+      }).observe(reel);
+    }
+
+    if ('MutationObserver' in window) {
+      new MutationObserver(entries => {
+        toggleOverflowClass(entries[0].target);
+      }).observe(reel, {childList: true});
+    }
+  }
+})();
+*/

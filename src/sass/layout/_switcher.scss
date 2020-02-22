@@ -1,0 +1,37 @@
+/* There are any number of situations in which you might want to 
+switch directly between a horizontal and vertical layout. But it 
+is especially useful where each element should be considered equal, 
+or part of a continuum. Card components advertising products should 
+share the same width no matter the orientation, otherwise one or more 
+cards could be perceived as highlighted or featured in some way.
+
+A set of numbered steps is also easier on cognition if those steps 
+are laid out along one horizontal or vertical line.
+ */
+
+.switcher > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc((var(--s1) / 2) * -1); //*The space (margin) between the (child) elements
+}
+
+.switcher > * > * {
+  flex-grow: 1;
+  //*The container width at which the component switches between a horizontal and vertical layout (--measure)
+  flex-basis: calc((var(--measure) - (100% - var(--s1))) * 999);
+  margin: calc(var(--s1) / 2);
+}
+//*The maximum number of elements allowed to appear in the horizontal configuration (4 is n+5) if less than five nothing happens.
+.switcher > * > :nth-last-child(n+5),
+.switcher > * > :nth-last-child(n+5) ~ * {
+  flex-basis: 100%;
+}
+
+//* BASIC HTML */
+/* <div class="switcher">
+  <div> <!-- intermediary wrapper -->
+    <div><!-- child element --></div>
+    <div><!-- another child element --></div>
+    <div><!-- etc --></div>
+  </div>
+</div> */

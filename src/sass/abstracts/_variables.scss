@@ -1,0 +1,39 @@
+/* Root defined variables are globally accessible. Javascript and pierce Shadow DOM */
+:root {
+
+/* Modular Scale - Change ratio to create different spacing harmonies */  
+  --ratio: 1.5;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+
+  /* Fonts */
+  --font-plain: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-special: Barlow Condensed, Helvetica, sans-serif;
+  --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
+
+  /* Colors */
+  /* Greys */
+  --color-dark: hsl(0, 0%, 2%);
+  --color-darkish: hsl(0, 0%, 25%);
+  --color-lightish: hsl(0, 0%, 90%);
+  --color-light: hsl(0, 0%, 98%);
+  --color-mid: hsl(0, 0%, 50%);
+
+// Measure - Width of a line of text 60ch default. 45-75 good.
+  --measure: 65ch;
+
+  --line-height: var(--ratio);
+  --line-height-small: calc(0.8 * var(--ratio));
+
+  --border-thin: var(--s-5);
+  --border-thick: var(--s-2);
+}

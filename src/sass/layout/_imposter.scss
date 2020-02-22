@@ -1,0 +1,36 @@
+/* 
+The purpose of the Imposter element is to add a general purpose 
+superimposition element to your layouts suite. It will allow the 
+author to centrally position an element over the viewport, the document, 
+or a selected “positioning container” element.
+Wherever content needs to be deliberately obscured, the Imposter pattern 
+is your friend. It may be that the content is yet to be made available. 
+In which case, the Imposter may consist of a call-to-action to unlock 
+that content.
+*/
+
+
+.imposter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imposter.contain {
+  --margin: 0px;
+  overflow: auto;
+  max-width: calc(100% - (var(--margin) * 2));
+  max-height: calc(100% - (var(--margin) * 2));
+}
+
+/* Basic HTML */
+
+/* 
+<div style="position: relative">
+  <p>Static content</p>
+  <div class="imposter">
+    <p>Superimposed content</p>
+  </div>
+</div>
+ */

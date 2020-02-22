@@ -1,0 +1,39 @@
+/* 
+The Sidebar is applicable to all sorts of content. The ubiquitous
+“media object” (the placing of an item of media next to a description) is 
+a mainstay, but it can also be used to align buttons with form inputs 
+(where the button forms the sidebar and has an intrinsic, content-based width).
+*/
+
+.with-sidebar {
+  overflow: hidden;
+}
+
+.with-sidebar > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--s1) / 2 * -1);
+}
+
+.with-sidebar > * > * {
+  margin: calc(var(--s1) / 2);
+  flex-grow: 1;
+}
+
+.with-sidebar > * > :last-child { //Switch to :first-child if sidebar on the right
+  flex-basis: 0; // When 0 width of sidebar is content based. If needed add more. flex-basis: 20rem; example
+  flex-grow: 999;
+  /* 
+  The narrowest the content (main) element can be before wrapping. Should be a percentage. (50% default) */
+  min-width: calc(50% - var(--s1));
+}
+
+/* Example HTML */
+/* 
+<div class="with-sidebar">
+  <div> <!-- intermediary wrapper -->
+    <div><!-- sidebar --></div>
+    <div><!-- non-sidebar --></div>
+  </div>
+</div>
+ */

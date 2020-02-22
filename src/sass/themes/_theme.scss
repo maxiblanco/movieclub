@@ -1,0 +1,21 @@
+/* Basic Theme */
+:root {
+  line-height: var(--ratio);
+  font-size: calc(0.333vw + 1em);
+  font-family: var(--font-plain);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+
+/* Cascade new base theme */
+
+/* 
+:root {
+  line-height: var(--ratio);
+  font-size: calc(0.333vw + 1em);
+  font-family: var(--font-plain);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+*/

@@ -1,0 +1,48 @@
+
+
+.frame {
+  --n: 9; /* Width */
+  --d: 16; /* Height */
+  padding-bottom: calc(var(--n) / var(--d) * 100%);
+  position: relative;
+}
+
+.frame > * {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Manage how to handle replaced elements */
+.frame > img,
+.frame > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-position: 50%; This is default
+  but can be changed to choose the point around
+  where to crop the replaced element. 50 is center. */ 
+}
+
+/* 
+TO SWITCH ASPECT RATIO WITH MOBILE ORIENTATION
+@media (orientation: portrait) {
+  .frame {
+    --n: 1;
+    --d: 1;
+  }
+}
+*/
+
+/* 
+BASIC HTML
+<div class="frame">
+  
+</div>
+  
+*/
