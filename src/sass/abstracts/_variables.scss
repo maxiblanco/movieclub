@@ -2,7 +2,7 @@
 :root {
 
 /* Modular Scale - Change ratio to create different spacing harmonies */  
-  --ratio: 1.5;
+  --ratio: 1.4;
   --s-5: calc(var(--s-4) / var(--ratio));
   --s-4: calc(var(--s-3) / var(--ratio));
   --s-3: calc(var(--s-2) / var(--ratio));
@@ -30,7 +30,7 @@
 
 
 // Measure - Width of a line of text 60ch default. 45-75 good.
-  --measure: 65ch;
+  --measure: 60ch;
 
   --line-height: var(--ratio);
   --line-height-small: calc(0.8 * var(--ratio));

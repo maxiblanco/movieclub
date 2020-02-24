@@ -4,7 +4,7 @@ keywords, or other meta information. Use the Cluster to align any groups of hori
 elements to the left or right, or in the center. */
 
 .cluster {
-  --space: var(--s1); // Change this value for spacing
+  --space: var(--s0); // Change this value for spacing
   overflow: hidden;
 }
 
@@ -17,6 +17,42 @@ elements to the left or right, or in the center. */
 }
 
 .cluster > * > * {
+  margin: calc(var(--space) / 2);
+}
+
+.cluster-inner {
+  --space: var(--s0); // Change this value for spacing
+  overflow: hidden;
+}
+
+//Below classes are for composite clusters in a header for example
+
+.cluster-inner > * {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; // Horizontal alignment
+  align-items: center; // Vertical alignment
+  margin: calc(var(--space) / 2 * -1); // Space between each element
+}
+
+.cluster-inner > * > * {
+  margin: calc(var(--space) / 2);
+}
+
+.cluster-outer {
+  --space: var(--s0); // Change this value for spacing
+  overflow: hidden;
+}
+
+.cluster-outer > * {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; // Horizontal alignment
+  align-items: center; // Vertical alignment
+  margin: calc(var(--space) / 2 * -1); // Space between each element
+}
+
+.cluster-outer > * > * {
   margin: calc(var(--space) / 2);
 }
 

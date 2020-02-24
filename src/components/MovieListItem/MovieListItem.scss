@@ -1,1 +1,15 @@
 /* MovieListItem only css */
+.movie-card {
+  min-width: calc(var(--measure) / 5);
+  max-width: calc(var(--measure) / 3);
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: var(--s2);
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
