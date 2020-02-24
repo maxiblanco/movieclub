@@ -6,7 +6,7 @@ const MovieListItem = (
 ) => {
   return (
     <div
-      className='box movie-card grow'
+      className='box movie-card grow scroll-item'
       onClick={() => {setCurrent(id)}
       }>
       <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />

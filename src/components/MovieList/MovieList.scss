@@ -26,3 +26,8 @@
 	/* Opera doesn't support this in the shorthand */
 	background-attachment: local, local, scroll, scroll;
 }
+
+
+.scroll {
+	scroll-snap-type: x proximity;
+}
