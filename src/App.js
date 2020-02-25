@@ -6,10 +6,12 @@ import MovieDetail from './components/MovieDetail/MovieDetail';
 import 'main.scss';
 
 const App = () => {
+  // Fetch list of movies and save state
   const [popularMovies, setPopMovies] = useState([]);
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [sciFyMovies, setSciFyMovies] = useState([]);
-  const [isHidden, toggleHidden] = useState(true);
+  // Manage selected movie and detail
+  const [isMovieDetailOpen, toggleMovieDetail] = useState(false);
   const [current, setCurrent] = useState([]);
 
   const api_url = 'https://api.themoviedb.org/3/discover/movie';
@@ -46,7 +48,7 @@ const App = () => {
           <h1>My Movie Database</h1>
           <nav className='cluster-inner'>
             <div>
-            <input className="search-input" label="search"/>
+            <input type="text" placeholder="search" className="search-input" label="search"/>
               <button className="grow">
                 <img alt="Search icon" src='https://img.icons8.com/pastel-glyph/64/000000/search--v1.png'/>
               </button>
@@ -61,13 +63,15 @@ const App = () => {
         </div>
       </header>
       <main>
-        { isHidden &&
+        { isMovieDetailOpen &&
           <MovieDetail
-          currentMovie={popularMovies.find(movie => movie.id === current) || horrorMovies.find(movie => movie.id === current) ||
+          currentMovie={
+            popularMovies.find(movie => movie.id === current) || 
+            horrorMovies.find(movie => movie.id === current) ||
             sciFyMovies.find(movie => movie.id === current)}
           current={current}
-          toggleHidden={toggleHidden}
-          isHidden={isHidden}
+          toggleMovieDetail={toggleMovieDetail}
+          isMovieDetailOpen={isMovieDetailOpen}
         />
         }
 
@@ -75,25 +79,29 @@ const App = () => {
           className='center cover'
           movies={popularMovies}
           setCurrent={setCurrent}
-          toggleHidden={toggleHidden}
-          isHidden={isHidden}
+          toggleMovieDetail={toggleMovieDetail}
+          isMovieDetailOpen={isMovieDetailOpen}
         />
         <MovieList
           className='center cover'
           movies={horrorMovies}
           setCurrent={setCurrent}
+          toggleMovieDetail={toggleMovieDetail}
+          isMovieDetailOpen={isMovieDetailOpen}
         />
         <MovieList
           className='center cover'
           movies={sciFyMovies}
           setCurrent={setCurrent}
+          toggleMovieDetail={toggleMovieDetail}
+          isMovieDetailOpen={isMovieDetailOpen}
         />
       </main>
       <footer className='center'>
-        <p>The Open Imdb</p>
+        <p>The Open Imdb API</p>
         <span>
           <a href='https://icons8.com/icon/111487/search'>
-            Search icon by Icons8
+            Icons by Icons8
           </a>
         </span>
       </footer>

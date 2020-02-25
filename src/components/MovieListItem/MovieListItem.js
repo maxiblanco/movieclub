@@ -2,13 +2,14 @@ import React from 'react';
 import './MovieListItem.scss';
 
 const MovieListItem = (
-  { title, poster, id, setCurrent, overview},
+  { title, poster, id, setCurrent, overview, toggleMovieDetail}
 ) => {
   return (
     <div
       className='box movie-card grow scroll-item'
-      onClick={() => {setCurrent(id)}
-      }>
+      onClick={() => {setCurrent(id)
+      toggleMovieDetail(true)}}
+      >
       <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />
       <p className='image-text'>{title}</p>
     </div>
