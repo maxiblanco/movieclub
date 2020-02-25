@@ -10,32 +10,50 @@ const App = () => {
   const [popularMovies, setPopMovies] = useState([]);
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [sciFyMovies, setSciFyMovies] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('')
   // Manage selected movie and detail
   const [isMovieDetailOpen, toggleMovieDetail] = useState(false);
   const [current, setCurrent] = useState([]);
 
   const api_url = 'https://api.themoviedb.org/3/discover/movie';
+  const api_url_search = 'https://api.themoviedb.org/3/search/movie';
   const api_key = 'bf7a0d7e84fbc649f8d6f2819491a0d6';
 
   useEffect(() => {
     fetch(
-      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
     )
       .then(response => response.json())
       .then(data => setPopMovies(data.results));
 
     fetch(
-      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27`
+      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=27`
     )
       .then(response => response.json())
       .then(data => setHorrorMovies(data.results));
 
     fetch(
-      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=80`
+      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=80`
     )
       .then(response => response.json())
       .then(data => setSciFyMovies(data.results));
   }, []);
+
+  useEffect(() => {
+    fetch(
+      `${api_url_search}?api_key=${api_key}&query=${searchQuery}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
+    )
+      .then(response => response.json())
+      .then(data => setSearchResults(data.results));
+  }, [searchQuery])
+
+const handleSearchSubmit = (e) => {
+  e.preventDefault();
+  console.dir(e.target.firstChild.value);
+  const movieQuery = encodeURI(e.target.firstChild.value)
+  setSearchQuery(movieQuery)
+}
 
 /*   const handleClick = (el) => {
 
@@ -48,10 +66,12 @@ const App = () => {
           <h1>My Movie Database</h1>
           <nav className='cluster-inner'>
             <div>
-            <input type="text" placeholder="search" className="search-input" label="search"/>
-              <button className="grow">
+            <form onSubmit={handleSearchSubmit}>
+            <input type="text" placeholder="Search..." className="search-input" label="search"/>
+              <button type="submit" className="grow">
                 <img alt="Search icon" src='https://img.icons8.com/pastel-glyph/64/000000/search--v1.png'/>
               </button>
+            </form>
               <button className="grow">
                 <label>Log in</label>
               </button>
@@ -68,13 +88,24 @@ const App = () => {
           currentMovie={
             popularMovies.find(movie => movie.id === current) || 
             horrorMovies.find(movie => movie.id === current) ||
-            sciFyMovies.find(movie => movie.id === current)}
+            sciFyMovies.find(movie => movie.id === current) ||
+            searchResults.find(movie => movie.id === current)
+          }
           current={current}
           toggleMovieDetail={toggleMovieDetail}
           isMovieDetailOpen={isMovieDetailOpen}
         />
         }
-
+        {
+          searchResults &&
+          <MovieList
+          className='center cover'
+          movies={searchResults}
+          setCurrent={setCurrent}
+          toggleMovieDetail={toggleMovieDetail}
+          isMovieDetailOpen={isMovieDetailOpen}
+        />
+        }
         <MovieList
           className='center cover'
           movies={popularMovies}
