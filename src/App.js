@@ -85,10 +85,10 @@ const App = () => {
 
               </form>
               <button className='grow'>
-                <label>Log in</label>
+                <p>Log in</p>
               </button>
               <button className='grow'>
-                <label>Register</label>
+                <p>Register</p>
               </button>
             </div>
           </nav>

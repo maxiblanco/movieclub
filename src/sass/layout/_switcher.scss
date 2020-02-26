@@ -22,8 +22,8 @@ are laid out along one horizontal or vertical line.
   margin: calc(var(--s1) / 2);
 }
 //*The maximum number of elements allowed to appear in the horizontal configuration (4 is n+5) if less than five nothing happens.
-.switcher > * > :nth-last-child(n+3),
-.switcher > * > :nth-last-child(n+3) ~ * {
+.switcher > * > :nth-last-child(n+4),
+.switcher > * > :nth-last-child(n+4) ~ * {
   flex-basis: 100%;
 }
 

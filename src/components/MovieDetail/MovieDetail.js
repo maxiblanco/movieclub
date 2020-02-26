@@ -13,6 +13,8 @@ const MovieDetail = ({
   const [trailerKey, setTrailerKey] = useState([]);
   
   const opts = {
+    height: '216',
+    width: '384',
     playerVars: { // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
       origin: 'http://localhost:3000'
@@ -28,22 +30,31 @@ const MovieDetail = ({
       `${api_url_video}/${current}/videos?api_key=${api_key}`
     )
       .then(response => response.json())
-      .then(data => setTrailerKey(data.results));
+      .then(data => setTrailerKey(data.results[0].key));
   }, [current]);
-  console.log(trailerKey)
+
   return (
     <>
       {title && (
         <div className='movie-detail'>
           <div className='center imposter'>
             <div className='box container'>
-            <div className='switcher'>
             <p className='title-text'>{title}</p>
             <img
               className='poster'
               alt={title}
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
             />
+            {
+              trailerKey !== 'undefined' &&
+              <div className="trailer-box">
+              <YouTube
+              className="trailer"
+              videoId={trailerKey}
+              opts={opts}
+              onReady={handleVideoReady}/>
+              </div>
+            }
             <p className='overview-text'>{overview}</p>
             <img
               alt='close icon'
@@ -51,14 +62,6 @@ const MovieDetail = ({
               onClick={() => toggleMovieDetail(false)}
               src='https://img.icons8.com/small/50/000000/close-window.png' 
               />
-              {
-                trailerKey &&
-                <YouTube
-                videoId={trailerKey || trailerKey[0].key}
-                opts={opts}
-                onReady={handleVideoReady}/>
-              }
-            </div>
             </div>
           </div>
         </div>
