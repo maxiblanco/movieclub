@@ -11,7 +11,7 @@ const App = () => {
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [sciFyMovies, setSciFyMovies] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState('');
   // Manage selected movie and detail
   const [isMovieDetailOpen, toggleMovieDetail] = useState(false);
   const [current, setCurrent] = useState([]);
@@ -46,16 +46,16 @@ const App = () => {
     )
       .then(response => response.json())
       .then(data => setSearchResults(data.results));
-  }, [searchQuery])
+  }, [searchQuery]);
 
-const handleSearchSubmit = (e) => {
-  e.preventDefault();
-  console.dir(e.target.firstChild.value);
-  const movieQuery = encodeURI(e.target.firstChild.value)
-  setSearchQuery(movieQuery)
-}
-
-/*   const handleClick = (el) => {
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+    console.dir(e.target.firstChild.value);
+    const movieQuery = encodeURI(e.target.firstChild.value);
+    setSearchQuery(movieQuery);
+  };
+  console.log(searchResults);
+  /*   const handleClick = (el) => {
 
   } */
 
@@ -65,17 +65,29 @@ const handleSearchSubmit = (e) => {
         <div>
           <h1>My Movie Database</h1>
           <nav className='cluster-inner'>
-            <div>
-            <form onSubmit={handleSearchSubmit}>
-            <input type="text" placeholder="Search..." className="search-input" label="search"/>
-              <button type="submit" className="grow">
-                <img alt="Search icon" src='https://img.icons8.com/pastel-glyph/64/000000/search--v1.png'/>
-              </button>
-            </form>
-              <button className="grow">
+            <div className='cluster'>
+              <form onSubmit={handleSearchSubmit}>
+                <input
+                  type='text'
+                  placeholder='Search...'
+                  className='search-input'
+                  name='searchBox'
+                  id='searchBox'
+                />
+                <button>
+                <label for='searchBox'>
+                <img
+                  alt='Search icon'
+                  src='https://img.icons8.com/pastel-glyph/64/000000/search--v1.png'
+                />
+            </label>
+                </button>
+
+              </form>
+              <button className='grow'>
                 <label>Log in</label>
               </button>
-              <button className="grow">
+              <button className='grow'>
                 <label>Register</label>
               </button>
             </div>
@@ -83,29 +95,28 @@ const handleSearchSubmit = (e) => {
         </div>
       </header>
       <main>
-        { isMovieDetailOpen &&
+        {isMovieDetailOpen && (
           <MovieDetail
-          currentMovie={
-            popularMovies.find(movie => movie.id === current) || 
-            horrorMovies.find(movie => movie.id === current) ||
-            sciFyMovies.find(movie => movie.id === current) ||
-            searchResults.find(movie => movie.id === current)
-          }
-          current={current}
-          toggleMovieDetail={toggleMovieDetail}
-          isMovieDetailOpen={isMovieDetailOpen}
-        />
-        }
-        {
-          searchResults &&
+            currentMovie={
+              popularMovies.find(movie => movie.id === current) ||
+              horrorMovies.find(movie => movie.id === current) ||
+              sciFyMovies.find(movie => movie.id === current) ||
+              searchResults.find(movie => movie.id === current)
+            }
+            current={current}
+            toggleMovieDetail={toggleMovieDetail}
+            isMovieDetailOpen={isMovieDetailOpen}
+          />
+        )}
+        {searchResults && (
           <MovieList
-          className='center cover'
-          movies={searchResults}
-          setCurrent={setCurrent}
-          toggleMovieDetail={toggleMovieDetail}
-          isMovieDetailOpen={isMovieDetailOpen}
-        />
-        }
+            className='center cover'
+            movies={searchResults}
+            setCurrent={setCurrent}
+            toggleMovieDetail={toggleMovieDetail}
+            isMovieDetailOpen={isMovieDetailOpen}
+          />
+        )}
         <MovieList
           className='center cover'
           movies={popularMovies}
@@ -131,9 +142,7 @@ const handleSearchSubmit = (e) => {
       <footer className='center'>
         <p>The Open Imdb API</p>
         <span>
-          <a href='https://icons8.com/icon/111487/search'>
-            Icons by Icons8
-          </a>
+          <a href='https://icons8.com/icon/111487/search'>Icons by Icons8</a>
         </span>
       </footer>
     </div>

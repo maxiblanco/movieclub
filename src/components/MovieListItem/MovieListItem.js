@@ -6,7 +6,7 @@ const MovieListItem = (
 ) => {
   return (
     <div
-      className='box movie-card grow scroll-item'
+      className='movie-card scroll-item'
       onClick={() => {setCurrent(id)
       toggleMovieDetail(true)}}
       >
