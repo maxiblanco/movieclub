@@ -11,7 +11,7 @@ For that case it may be best to hide the scrollbar.
   height: auto;
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-color: var(--color-light) var(--color-dark); //* Thumb color - Track color
+  scrollbar-color: var(--color-mid) var(--color-darkish); //* Thumb color - Track color
 }
 
 .reel::-webkit-scrollbar {
@@ -19,17 +19,17 @@ For that case it may be best to hide the scrollbar.
 }
 
 .reel::-webkit-scrollbar-track {
-  background-color: var(--color-dark); //*Track color - The color of the scrollbar track
+  background-color: var(--color-darkish); //*Track color - The color of the scrollbar track
 }
 //*Thumb color - The color of the scrollbar thumb
 .reel::-webkit-scrollbar-thumb {
-  background-color: var(--color-dark);
+  background-color: var(--color-darkish);
   background-image: linear-gradient(
-    var(--color-dark) 0,
-    var(--color-dark) 0.25rem,
-    var(--color-light) 0.25rem,
-    var(--color-light) 0.75rem,
-    var(--color-dark) 0.75rem
+    var(--color-darkish) 0,
+    var(--color-darkish) 0.25rem,
+    var(--color-mid) 0.25rem,
+    var(--color-mid) 0.75rem,
+    var(--color-darkish) 0.75rem
   );
 }
 

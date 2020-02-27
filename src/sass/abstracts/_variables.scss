@@ -22,11 +22,16 @@
 
   /* Colors */
   /* Greys */
-  --color-dark: hsl(0, 0%, 2%);
+  --color-dark: #121629;
+  --color-darkish: #232946;
+  --color-lightish: #eebbc3;
+  --color-light: #fffffe;
+  --color-mid: #b8c1ec;
+/*   --color-dark: hsl(0, 0%, 2%);
   --color-darkish: hsl(0, 0%, 25%);
   --color-lightish: hsl(0, 0%, 90%);
   --color-light: hsl(0, 0%, 98%);
-  --color-mid: hsl(0, 0%, 50%);
+  --color-mid: hsl(0, 0%, 50%); */
 
 
 // Measure - Width of a line of text 60ch default. 45-75 good.

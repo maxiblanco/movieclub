@@ -61,40 +61,39 @@ const App = () => {
 
   return (
     <div className='box stack'>
-      <header className='cluster-outer box'>
+      <header className='cluster-outer box variant'>
         <div>
           <h1>My Movie Database</h1>
           <nav className='cluster-inner'>
             <div className='cluster'>
-              <form onSubmit={handleSearchSubmit}>
+            <form onSubmit={handleSearchSubmit}>
                 <input
                   type='text'
-                  placeholder='Search...'
+                  placeholder=''
                   className='search-input'
                   name='searchBox'
                   id='searchBox'
                 />
                 <button>
-                <label for='searchBox'>
-                <img
-                  alt='Search icon'
-                  src='https://img.icons8.com/pastel-glyph/64/000000/search--v1.png'
-                />
-            </label>
+                <label>
+                  <img
+                    alt='Search icon'
+                    src='https://img.icons8.com/ios-filled/52/000000/search.png'/>
+                </label>
                 </button>
-
               </form>
-              <button className='grow'>
-                <p>Log in</p>
-              </button>
-              <button className='grow'>
-                <p>Register</p>
-              </button>
+              {/*
+            <button className='grow'>
+            <p>Log in</p>
+          </button>
+          <button className='grow'>
+            <p>Register</p>
+          </button> */}
             </div>
           </nav>
         </div>
       </header>
-      <main>
+      <main className='stack'>
         {isMovieDetailOpen && (
           <MovieDetail
             currentMovie={

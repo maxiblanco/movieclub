@@ -4,9 +4,9 @@ card in a grid of many, or as the inner wrapper of a positioned dialog element. 
 
 .box {
   padding: var(--s1);
-  border: var(--border-thin) solid;
-  color: var(--color-dark);
-  background-color: var(--color-light);
+  border: var(--border-thin) solid var(--color-dark);
+  color: var(--color-light);
+  background-color: var(--color-darkish);
 }
 
 .box * {
@@ -14,8 +14,13 @@ card in a grid of many, or as the inner wrapper of a positioned dialog element. 
 }
 
 .box.invert {
+  color: var(--color-darkish);
+  background-color: var(--color-light);
+}
+
+.box.variant {
   color: var(--color-light);
-  background-color: var(--color-dark);
+  background-color: var(--color-mid);
 }
 
 /* HTML EXAMPLE */

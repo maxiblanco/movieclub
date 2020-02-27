@@ -1,3 +1,19 @@
+:root {
+  background-color: var(--color-darkish);
+  color: var(--color-light);
+  border-color: var(--color-dark);
+}
+
+.box.variant {
+  color: var(--color-dark);
+  input {
+    border-color: var(--color-darkish);
+    background-color: var(--color-lightish);
+    color: var(--color-dark);
+    border-radius: var(--s0);
+  }
+}
+
 .grow {
   transition: all 0.4s ease-in-out;
 }
@@ -8,7 +24,9 @@
 .search-input {
   border: solid;
   height: var(--s2);
-  width: calc(var(--measure));
+
+  min-width: calc(var(--measure)/2);
+  max-width: calc(var(--measure)*3);
   transition: all 0.3s ease-out;
 
 }

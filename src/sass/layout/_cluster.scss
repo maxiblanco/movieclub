@@ -10,8 +10,8 @@ elements to the left or right, or in the center. */
 
 .cluster > * {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; // Horizontal alignment
+  flex-wrap: nowrap;
+  justify-content: flex-start; // Horizontal alignment
   align-items: center; // Vertical alignment
   margin: calc(var(--space) / 2 * -1); // Space between each element
 }

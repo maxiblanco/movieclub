@@ -18,7 +18,7 @@ are laid out along one horizontal or vertical line.
 .switcher > * > * {
   flex-grow: 1;
   //*The container width at which the component switches between a horizontal and vertical layout (--measure)
-  flex-basis: calc((var(--measure) - (100% - var(--s1))) * 999);
+  flex-basis: calc((calc(var(--measure)*4) - (100% - var(--s1))) * 999);
   margin: calc(var(--s1) / 2);
 }
 //*The maximum number of elements allowed to appear in the horizontal configuration (4 is n+5) if less than five nothing happens.

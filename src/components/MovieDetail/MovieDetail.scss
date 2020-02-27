@@ -1,9 +1,12 @@
 /* Create an only */
 .movie-detail {
+  background-color: var(--color-mid);
   transition: all 0.4s ease-in-out;
-  max-width: var(--measure);
+  max-width: calc(var(--measure)*2);
+  min-width: calc(var(--measure)/2);
   .poster {
-    max-width: fit-content;
+    max-width: calc(var(--measure)/2);
+    min-width: calc(var(--measure)/6);
   }
   .container {
     position: relative;
@@ -16,12 +19,32 @@
   }
 }
 
+.title-text {
+  font-weight: 600;
+  margin-left: var(--s-1);
+  margin-bottom: var(--s-1);
+}
+.overview-text {
+  margin: var(--s-1) 0 0 0;
+}
+
 .trailer-box {
   display: inline-block;
   margin: var(--s0);
+  height: 100%;
 }
 
 .trailer {
-  margin: auto 0;
+  max-width: calc(var(--measure)/2);
+  min-width: calc(var(--measure)/6);
+  object-fit: cover;
   //Player look
+}
+
+@media (max-width: 750px) {
+  
+.trailer {
+  display: none;
+}
+  
 }
