@@ -10,8 +10,8 @@ const MovieListItem = (
       onClick={() => {setCurrent(id)
       toggleMovieDetail(true)}}
       >
-      <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />
       <p className='image-text'>{title}</p>
+      <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />
     </div>
   );
 };

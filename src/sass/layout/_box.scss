@@ -5,8 +5,6 @@ card in a grid of many, or as the inner wrapper of a positioned dialog element. 
 .box {
   padding: var(--s1);
   border: var(--border-thin) solid var(--color-dark);
-  color: var(--color-light);
-  background-color: var(--color-darkish);
 }
 
 .box * {

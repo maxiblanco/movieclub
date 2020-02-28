@@ -5,7 +5,7 @@ import './MovieList.scss';
 
 const MovieList = ({ movies, setCurrent, toggleMovieDetail }) => {
   return (
-    <div className='box variant'>
+    <div className='box'>
     <div className="">
     <div
       className='reel scroll'
