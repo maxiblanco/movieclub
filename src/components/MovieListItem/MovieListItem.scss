@@ -2,6 +2,7 @@
 .movie-card {
   min-width: calc(var(--measure) / 5);
   max-width: calc(var(--measure) / 3);
+  text-align: center;
   p {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -10,8 +11,9 @@
     text-align: center;
   }
   img {
-    width: 100%;
-    height: auto;
+    border-radius: var(--s-4);
+    min-width: calc(var(--measure) / 5);
+    max-width: calc(var(--measure) / 3);
   }
 }
 

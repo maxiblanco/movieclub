@@ -1,4 +1,6 @@
-
+header.box {
+  padding: var(--s0);
+}
 
 .grow {
   transition: all 0.4s ease-in-out;
@@ -9,6 +11,7 @@
 
 .search-input {
   border: solid;
+  border-radius: var(--s-3);
   height: var(--s2);
 
   min-width: calc(var(--measure)/2);

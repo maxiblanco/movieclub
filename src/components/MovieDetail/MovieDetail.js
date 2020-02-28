@@ -16,7 +16,7 @@ const MovieDetail = ({
     width: `${getComputedStyle(document.documentElement).getPropertyValue('--measure').replace(/[^\d]/g, '')*10}`,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
+      autoplay: 0,
       origin: 'http://localhost:3000',
     },
   };
@@ -26,9 +26,11 @@ const MovieDetail = ({
   };
 
   useEffect(() => {
-    fetch(`${api_url_video}/${current}/videos?api_key=${api_key}`)
+    if(current) {
+      fetch(`${api_url_video}/${current}/videos?api_key=${api_key}`)
       .then(response => response.json())
       .then(data => setTrailerKey(data.results[0].key));
+    }
   }, [current]);
 
   return (

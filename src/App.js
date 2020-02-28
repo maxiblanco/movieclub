@@ -20,14 +20,14 @@ const App = () => {
   // Fetch list of movies and save state
   const [popularMovies, setPopMovies] = useState([]);
   const [movieLists, setMovieLists] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState(undefined);
+  const [searchQuery, setSearchQuery] = useState(undefined);
 
   // Manage selected movie and detail
   const [isMovieDetailOpen, toggleMovieDetail] = useState(false);
   const [current, setCurrent] = useState([]);
 
-  const api_url = 'https://api.themoviedb.org/3/discover/movie';
+  const api_url = 'https://api.themoviedb.org/3/discover/movie/';
   const api_url_search = 'https://api.themoviedb.org/3/search/movie';
   const api_key = 'bf7a0d7e84fbc649f8d6f2819491a0d6';
 
@@ -41,26 +41,47 @@ const App = () => {
         return data.results;
       })
     );
+    localStorage.setItem('movieLists', JSON.stringify(allGenreMovieLists))
     setMovieLists(allGenreMovieLists);
   };
 
   useEffect(() => {
-    const movieListsDatatoRender = fetchMoviesFromAPI(GENRES_IDS);
-    console.log(movieListsDatatoRender);
+    const popularMoviesStored = JSON.parse(localStorage.getItem('popMovieList'))
+    if (!popularMoviesStored) {
+      fetch(
+        `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
+        )
+        .then(response => response.json())
+        .then(data => {
+          setPopMovies(data.results)
+          localStorage.setItem('popMovieList', JSON.stringify(data.results))
+        });
+    } else {
+      setPopMovies(popularMoviesStored)
+    }
 
-    fetch(
-      `${api_url}?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
-    )
-      .then(response => response.json())
-      .then(data => setPopMovies(data.results));
+    
+      const storedMovieLists = localStorage.getItem('movieLists')
+      console.log(storedMovieLists)
+
+    if (!!storedMovieLists) {
+      fetchMoviesFromAPI(GENRES_IDS);
+    } else {
+      setMovieLists(JSON.parse(storedMovieLists))
+    }
+
   }, []);
 
   useEffect(() => {
-    fetch(
-      `${api_url_search}?api_key=${api_key}&query=${searchQuery}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
-    )
-      .then(response => response.json())
-      .then(data => setSearchResults(data.results));
+    console.log(searchQuery, 'first')
+    if (!!searchQuery) {
+      fetch(
+        `${api_url_search}?api_key=${api_key}&query=${searchQuery}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`
+      )
+        .then(response => response.json())
+        .then(data => setSearchResults(data.results));
+    }
+    console.log(searchQuery, 'second')
   }, [searchQuery]);
 
   const handleSearchSubmit = e => {
@@ -78,23 +99,23 @@ const App = () => {
         <div>
           <h1>My Movie Database</h1>
           <nav className='cluster-inner'>
-            <div className='cluster'>
+            <div className='cluster box'>
               <form onSubmit={handleSearchSubmit}>
-                <input
-                  type='text'
-                  placeholder=''
-                  className='search-input'
-                  name='searchBox'
-                  id='searchBox'
-                />
-                <button>
-                  <label>
-                    <img
-                      alt='Search icon'
-                      src='https://img.icons8.com/ios-filled/52/000000/search.png'
-                    />
-                  </label>
-                </button>
+              <input
+                type='text'
+                placeholder=''
+                className='search-input'
+                name='searchBox'
+                id='searchBox'
+              />
+              <button>
+                <label>
+                  <img
+                    alt='Search icon'
+                    src='https://img.icons8.com/ios-filled/52/000000/search.png'
+                  />
+                </label>
+              </button>
               </form>
               {/*
             <button className='grow'>
@@ -119,7 +140,7 @@ const App = () => {
             isMovieDetailOpen={isMovieDetailOpen}
           />
         )}
-        {searchResults && (
+        {searchResults &&
           <MovieList
             className='center cover'
             movies={searchResults}
@@ -127,7 +148,7 @@ const App = () => {
             toggleMovieDetail={toggleMovieDetail}
             isMovieDetailOpen={isMovieDetailOpen}
           />
-        )}
+        }
         <MovieList
           className='center cover'
           movies={popularMovies}
