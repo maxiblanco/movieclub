@@ -42,11 +42,14 @@ const MovieDetail = ({
             <p className='title-text'>{title}</p>
             <div className='cluster'>
             <div>
-            <img
-            className='poster'
-            alt={title}
-            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-          />
+            {!!poster_path ? (
+              <img alt={title} src={`https://image.tmdb.org/t/p/w200/${poster_path}`} />
+            ) : (
+              <img
+                alt={title}
+                src={`https://placeholder.pics/svg/200x287/DEDEDE/555555/${encodeURI('No poster')}`}
+              />
+            )}
           {trailerKey !== 'undefined' && (
             <div className='trailer-box'>
               <YouTube
